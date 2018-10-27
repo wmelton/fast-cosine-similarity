@@ -106,7 +106,7 @@ import(
     "encoding/binary"
     "encoding/base64"
 )
- func convertArrayToBase64(array []float64) string {
+func convertArrayToBase64(array []float64) string {
 	bytes := make([]byte, 0, 8*len(array))
 	for _, a := range array {
 		bits := math.Float64bits(a)
@@ -117,7 +117,7 @@ import(
  	encoded := base64.StdEncoding.EncodeToString(bytes)
 	return encoded
 }
- func convertBase64ToArray(base64Str string) ([]float64, error) {
+func convertBase64ToArray(base64Str string) ([]float64, error) {
 	decoded, err := base64.StdEncoding.DecodeString(base64Str)
 	if err != nil {
 		return nil, err
