@@ -99,6 +99,40 @@ def encode_array(arr):
     base64_str = base64.b64encode(np.array(arr).astype(dbig)).decode("utf-8")
     return base64_str
 ```
+**Go**
+```
+import(
+    "math"
+    "encoding/binary"
+    "encoding/base64"
+)
+ func convertArrayToBase64(array []float64) string {
+	bytes := make([]byte, 0, 8*len(array))
+	for _, a := range array {
+		bits := math.Float64bits(a)
+		b := make([]byte, 8)
+		binary.BigEndian.PutUint64(b, bits)
+		bytes = append(bytes, b...)
+	}
+ 	encoded := base64.StdEncoding.EncodeToString(bytes)
+	return encoded
+}
+ func convertBase64ToArray(base64Str string) ([]float64, error) {
+	decoded, err := base64.StdEncoding.DecodeString(base64Str)
+	if err != nil {
+		return nil, err
+	}
+ 	length := len(decoded)
+	array := make([]float64, 0, length/8)
+ 	for i := 0; i < len(decoded); i += 8 {
+		bits := binary.BigEndian.Uint64(decoded[i : i+8])
+		f := math.Float64frombits(bits)
+		array = append(array, f)
+	}
+	return array, nil
+}
+```
+
 
 ### Querying
 
