@@ -10,7 +10,13 @@ Company Website: <http://staysense.com>
 
 # Fast Elasticsearch Vector Scoring
 
-This Plugin allows you to score Elasticsearch documents based on embedding-vectors, using dot-product or cosine-similarity at break neck speeds.
+This Plugin allows you to score Elasticsearch documents based on embedding-vectors, using dot-product or cosine-similarity. Note, this is a linear search approach in its current version. For very large data sets, this is likely not a good choice for realtime search queries. 
+
+Depending on cluster size this plugin will likely stop being performant around +1 Million docs.
+
+ElasticSearch is working on some native vector functionality, however their approaches all use Locality Sensitive Hashing (LSH) approaches. That is to say, their current beta releases all result in approximate results. If you need exact results, this new featureset will not be useful to you. 
+
+We are working on a solution to hopefully close this false-negative gap common with LSH, however we are not communicating a timeline on the delivery of this solution at this time. Until that time, if you have a large corpus, we would recommend checking out the FAISS (pronounced: Face) project.
 
 ## General
 * This plugin was ported from [This elasticsearch 5.x vector scoring plugin](https://github.com/MLnick/elasticsearch-vector-scoring) and [this discussion](https://discuss.elastic.co/t/vector-scoring/85227/6) and  [lior-k](https://github.com/lior-k)'s original contribution for ElasticSearch 5.5+ to achieve lightning fast result times when searching across millions of documents.
