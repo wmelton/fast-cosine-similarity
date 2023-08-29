@@ -1,12 +1,8 @@
-![alt text](http://staysense.com/img/staysense-logo.png "StaySense Orchestrator")
+**Update** - Since this plugin was originally written many years ago, ElasticSearch and OpenSearch have deployed native ANN/KNN search capabilities within the product via hnswlib which is an even faster implementation.
 
-StaySense - Fast Cosine Similarity ElasticSearch Plugin
+Fast Cosine Similarity ElasticSearch Plugin
 ================================
 Extremely fast vector scoring on ElasticSearch 6.4.x+ using vector embeddings.
-
-<b>About StaySense</b>: [StaySense](http://staysense.com) is a revolutionary software company creating the most advanced marketing software ever made publicly available for Hospitality Managers in the Vacation Rental and Hotel Industries. 
-
-Company Website: <http://staysense.com>
 
 # Fast Elasticsearch Vector Scoring
 
